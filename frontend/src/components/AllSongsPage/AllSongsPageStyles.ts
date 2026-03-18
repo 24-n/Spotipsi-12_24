@@ -1,12 +1,20 @@
 import { makeStyles } from 'tss-react/mui'
 
 const useStyles = makeStyles()(() => ({
-    PageContent:{
+    AllSongsPage:{
         height:"100%",
-        padding:"1%",
-        backgroundColor:"#121212"
+        color:"white"
+
+    },
+
+    H1:
+    {
+        textAlign:"end",
+        margin:"0"
     
     }
+
+    
 }));
 
 export default useStyles
