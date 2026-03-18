@@ -16,7 +16,8 @@ const useStyles = makeStyles()(() => ({
         fontSize: "1vw",
         margin: "0",
         padding: "5% 0 5% 0",
-        "&:hover": {
+        cursor: "pointer",
+        "&:active,&:hover": {
             backgroundColor: "#2D2032",
         }
     },
