@@ -9,9 +9,13 @@ const useStyles = makeStyles()(() => ({
     },
     title: {
         color: "#B764DA",
+        fontSize: "1.2vw",
         fontFamily: "Arial, Helvetica, sans-serif",
         margin: "0",
-        padding: "0 12px 0 0"
+        padding: "0 1% 0 0"
+    },
+    icon: {
+        fontSize: "1.2vw",
     }
 }));
 
