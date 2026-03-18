@@ -5,12 +5,17 @@ import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const SideBar = (setcurrentpage: React.Dispatch<React.SetStateAction<string>>) => {
+interface Props {
+  setcurrentpage: React.Dispatch<React.SetStateAction<string>>
+}
+const SideBar = ({setcurrentpage}:Props) => {
   const { classes } = useStyles();
   const navigate = useNavigate()
   const setCurrentPage = (newPage: string): void => {
-    setcurrentpage(newPage)
-    navigate(`/${newPage}`)
+    setcurrentpage(newPage);
+    navigate(`/${newPage}`,{replace:true});
+    
+  
   }
 
   return (

@@ -21,12 +21,12 @@ interface Props
   setPlaylists:React.Dispatch<React.SetStateAction<Playlist[]>>;
   isLoading:boolean;
 }
-function Main({songs,favorites,playlists,currentPage,setFavorites,setPlaylists,isLoading}:Props) {
+function Main({songs,favorites,playlists,currentPage,setCurrentPage,setFavorites,setPlaylists,isLoading}:Props) {
   let {currentPagestr} = useParams();
   
   if (!currentPagestr)
   {
-    currentPagestr = "h";
+    currentPagestr = "allSongs";
   }
  
   const {classes} = useStyles();
@@ -43,11 +43,11 @@ function Main({songs,favorites,playlists,currentPage,setFavorites,setPlaylists,i
             <Grid size={10.3} height={"82vh"}>
             
               {!isLoading && <PageContent songs={songs} favorites={favorites} playlists={playlists}
-              currentPage={currentPagestr} setFavorites={setFavorites} setPlaylists={setPlaylists}/>}
+              currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists}/>}
             </Grid>
 
             <Grid size={1.7} height={"82vh"}>
-              <SideBar />
+              <SideBar setcurrentpage={setCurrentPage}/>
             </Grid>
 
            

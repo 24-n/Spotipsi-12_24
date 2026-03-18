@@ -17,13 +17,15 @@ interface Props
 
 function PageContent({songs,favorites,playlists,currentPage,setFavorites,setPlaylists}:Props) {
   
-  console.log(currentPage);
+  
   const {classes} = useStyles();
   return(
       <div className={classes.PageContent}>
-        {currentPage == "p" && <AllSongsPage songs={songs} favorites={favorites} playlists={playlists}
+        {currentPage == "allSongs" && <AllSongsPage songs={songs} favorites={favorites} playlists={playlists}
               currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} />}
-        {currentPage == "h" && <FavoritesPage songs={songs} favorites={favorites} playlists={playlists}
+        {currentPage == "favorite" && <FavoritesPage songs={songs} favorites={favorites} playlists={playlists}
+              currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} />}
+        {currentPage == "playlists" && <AllSongsPage songs={songs} favorites={favorites} playlists={playlists}
               currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} />}
       </div>
   );

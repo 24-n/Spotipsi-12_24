@@ -4,7 +4,7 @@ import {BrowserRouter as Router,Route,Routes, data} from "react-router-dom"
 import {type Song } from ".././types/Song";
 import {type Playlist } from ".././types/Playlist";
 import { useState,useEffect, type FC } from "react";
-
+import { useNavigate } from "react-router-dom";
  
   
 
@@ -34,7 +34,7 @@ function App() {
     }
   }
 
-  const [currentPage,setCurrentPage] = useState<string>("h");
+  const [currentPage,setCurrentPage] = useState<string>("allSongs");
   const [songs,setSongs] = useState<Song[]>([]);
   const [favorites,setFavorites] = useState<string[]>([]);
   const [playlists,setPlaylists] = useState<Playlist[]>([]);
@@ -52,8 +52,8 @@ function App() {
         <div className={classes.App}>
           <Router>
             <Routes>
-              <Route path="/" element={<Main songs={songs} favorites={favorites!} playlists={playlists} currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} setCurrentPage={setCurrentPage} isLoading={isLoading}/>} />
-              <Route path="/pages/:currentpage" element={<Main songs={songs} favorites={favorites!} playlists={playlists} currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} setCurrentPage={setCurrentPage} isLoading={isLoading}/>} />
+              <Route path="/:currentpage?" element={<Main songs={songs} favorites={favorites!} playlists={playlists} currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} setCurrentPage={setCurrentPage} isLoading={isLoading}/>} />
+             
             </Routes>
           </Router>
         </div>
