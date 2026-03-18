@@ -5,10 +5,30 @@ import SideBar from "../SideBar/SideBar";
 import PageContent from "../PageContent/PageContent";
 import { Grid } from "@mui/material";
 import Box from '@mui/material/Box';
+import {type Song } from "../../types/Song";
+import {type Playlist } from "../../types/Playlist";
+import React from "react";
+import {Route,useParams} from 'react-router-dom'
 
-
-function Main() {
+interface Props
+{
+  songs:Song[],
+  favorites:string[];
+  playlists:Playlist[];
+  currentPage:string;
+  setCurrentPage:React.Dispatch<React.SetStateAction<string>>;
+  setFavorites:React.Dispatch<React.SetStateAction<string[]>>;
+  setPlaylists:React.Dispatch<React.SetStateAction<Playlist[]>>;
+  isLoading:boolean;
+}
+function Main({songs,favorites,playlists,currentPage,setCurrentPage,setFavorites,setPlaylists,isLoading}:Props) {
+  let {currentPagestr} = useParams();
   
+  if (!currentPagestr)
+  {
+    currentPagestr = "allSongs";
+  }
+ 
   const {classes} = useStyles();
   
   return(
@@ -22,11 +42,12 @@ function Main() {
 
             <Grid size={10.3} height={"82vh"}>
             
-              <PageContent />
+              {!isLoading && <PageContent songs={songs} favorites={favorites} playlists={playlists}
+              currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists}/>}
             </Grid>
 
             <Grid size={1.7} height={"82vh"}>
-              <SideBar />
+              <SideBar setcurrentpage={setCurrentPage}/>
             </Grid>
 
            
