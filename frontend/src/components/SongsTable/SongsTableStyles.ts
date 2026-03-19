@@ -26,7 +26,6 @@ const useStyles = makeStyles()(() => ({
     ListItm: {
         borderBottom: '1px solid rgba(150,150,150,0.2)',
         gap: "1%",
-    
     },
 
     ListItmTxt: {

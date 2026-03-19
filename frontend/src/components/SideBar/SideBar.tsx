@@ -14,8 +14,6 @@ const SideBar = ({setcurrentpage}:Props) => {
   const setCurrentPage = (newPage: string): void => {
     setcurrentpage(newPage);
     navigate(`/${newPage}`,{replace:true});
-    
-  
   }
 
   return (

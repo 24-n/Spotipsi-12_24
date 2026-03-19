@@ -2,11 +2,8 @@ import { makeStyles } from 'tss-react/mui'
 
 const useStyles = makeStyles()(() => ({
     Player:{
-        backgroundColor:"red",
+        backgroundColor:"#313131",
         height:"100%",
-       
-        
-       
     }
 }));
 

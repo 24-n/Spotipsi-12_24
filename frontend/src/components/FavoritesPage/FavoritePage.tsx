@@ -23,7 +23,6 @@ function FavoritesPage({songs,favorites,playlists,currentPage,setFavorites,setPl
             <SongsTable songs={filteredSongs} favorites={favorites} playlists={playlists}
                 currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} />
         </div>
-    
     )
 }
 export default FavoritesPage

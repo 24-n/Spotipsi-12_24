@@ -12,8 +12,6 @@ interface Props
   currentPage:string;
   setFavorites:React.Dispatch<React.SetStateAction<string[]>>;
   setPlaylists:React.Dispatch<React.SetStateAction<Playlist[]>>;
- 
-
 }
 
 function AllSongsPage({songs,favorites,playlists,currentPage,setFavorites,setPlaylists}:Props) {
@@ -24,7 +22,6 @@ function AllSongsPage({songs,favorites,playlists,currentPage,setFavorites,setPla
             <SongsTable songs={songs} favorites={favorites} playlists={playlists}
                 currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} />
         </div>
-    
     )
 }
 export default AllSongsPage

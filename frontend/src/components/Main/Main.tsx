@@ -23,16 +23,12 @@ interface Props
 }
 function Main({songs,favorites,playlists,currentPage,setCurrentPage,setFavorites,setPlaylists,isLoading}:Props) {
   let {currentPagestr} = useParams();
-  
   if (!currentPagestr)
   {
     currentPagestr = "allSongs";
   }
- 
   const {classes} = useStyles();
-  
   return(
-      
       <div className={classes.Main}>
         <Box>
           <Grid container spacing={0}>
@@ -51,10 +47,6 @@ function Main({songs,favorites,playlists,currentPage,setCurrentPage,setFavorites
             </Grid>
           </Grid>
         </Box>
-      
-
-     
-       
       </div>
   );
 }

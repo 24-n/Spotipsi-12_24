@@ -5,7 +5,7 @@ import React from "react";
 import SongsTable from "../SongsTable/SongsTable";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import IconButton from '@mui/material/IconButton';
-import { Navigate, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 interface Props {
     songs: Song[],
@@ -29,13 +29,10 @@ function PlayListPage({ songs, favorites, playlists, currentPage, setCurrentPage
                     <ArrowBackIcon />
                 </IconButton>
                 <h1 className={classes.H1}>{currentPage}</h1>
-
             </div>
-
             <SongsTable songs={filteredSongs} favorites={favorites} playlists={playlists}
                 currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} />
         </div>
-
     )
 }
 export default PlayListPage

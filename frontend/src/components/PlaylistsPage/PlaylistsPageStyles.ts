@@ -52,12 +52,13 @@ const useStyles = makeStyles()(() => ({
         width: "100%",
         color: "white",
         backgroundColor: "#424242",
+        
     },
     cancellation: {
         color: "#B764DA",
     },
     createAndName: {
-        color: "white",
+        color: "rgba(255,255,255,0.4)",
     }
 }));
 

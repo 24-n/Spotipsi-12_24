@@ -18,14 +18,9 @@ interface Props {
 }
 
 function PageContent({ songs, favorites, playlists, currentPage,setCurrentPage, setFavorites, setPlaylists }: Props) {
-
-
   const { classes } = useStyles();
   return (
     <div className={classes.PageContent}>
-    
-     
-     
       {currentPage == "allSongs" && <AllSongsPage songs={songs} favorites={favorites} playlists={playlists}
         currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists}/>}
       {currentPage == "favorite" && <FavoritesPage songs={songs} favorites={favorites} playlists={playlists}
@@ -34,8 +29,6 @@ function PageContent({ songs, favorites, playlists, currentPage,setCurrentPage, 
         currentPage={currentPage} setCurrentPage={setCurrentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} />}
       {(currentPage != "playlists"  && currentPage != "favorite"  && currentPage != "allSongs") && <PlayListPage songs={songs} favorites={favorites} playlists={playlists}
         currentPage={currentPage} setCurrentPage={setCurrentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} />}
-        
-      
     </div>
   );
 }

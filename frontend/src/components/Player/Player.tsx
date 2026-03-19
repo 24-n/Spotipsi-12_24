@@ -4,7 +4,7 @@ function Player() {
   
   const {classes} = useStyles();
   return(
-      <div className={classes.Player}>player</div>
+      <div className={classes.Player}></div>
   );
 }
 export default Player

@@ -1,21 +1,16 @@
 import useStyles from "./AppStyles";
 import Main from "../components/Main/Main";
-import {BrowserRouter as Router,Route,Routes, data} from "react-router-dom"
+import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 import {type Song } from ".././types/Song";
 import {type Playlist } from ".././types/Playlist";
-import { useState,useEffect, type FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState,useEffect} from "react";
 const SONGS_URL = "http://127.0.0.1:5001/api/songs"
 const FAVORITE_URL = "http://127.0.0.1:5001/api/favorites"
 const PLAYLISTS_URL = "http://127.0.0.1:5001/api/playlists"
 
 
 function App() {
-
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string>();
-
-
   const fetchFromServer = async(url:string,setter: React.Dispatch<React.SetStateAction<Song[]>> | React.Dispatch<React.SetStateAction<Playlist[]>> | React.Dispatch<React.SetStateAction<string[]>>) =>
   {
     setIsLoading(true);
@@ -25,8 +20,6 @@ function App() {
       setter(data);
    
     } catch (error) {
-
-      setError("Something went wrong");
       console.error(error);
       return;
     }
@@ -49,16 +42,13 @@ function App() {
 
   const {classes} = useStyles();
   return(
-      
         <div className={classes.App}>
           <Router>
             <Routes>
-              <Route path="/:currentpage?" element={<Main songs={songs} favorites={favorites!} playlists={playlists} currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} setCurrentPage={setCurrentPage} isLoading={isLoading}/>} />
-             
+              <Route path="/:currentpage?" element={<Main songs={songs} favorites={favorites!} playlists={playlists} currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists} setCurrentPage={setCurrentPage} isLoading={isLoading}/>} />     
             </Routes>
           </Router>
         </div>
-     
   );
 }
 export default App
