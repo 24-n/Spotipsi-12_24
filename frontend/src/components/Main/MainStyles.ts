@@ -2,8 +2,10 @@ import { makeStyles } from 'tss-react/mui'
 
 const useStyles = makeStyles()(() => ({
     Main:{
-        height:"fit-content",
+        minHeight:"100vh",
        
+        maxHeight:"100vh"
+      
     },
 
     

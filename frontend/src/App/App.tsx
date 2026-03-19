@@ -5,8 +5,9 @@ import {type Song } from ".././types/Song";
 import {type Playlist } from ".././types/Playlist";
 import { useState,useEffect, type FC } from "react";
 import { useNavigate } from "react-router-dom";
- 
-  
+const SONGS_URL = "http://127.0.0.1:5001/api/songs"
+const FAVORITE_URL = "http://127.0.0.1:5001/api/favorites"
+const PLAYLISTS_URL = "http://127.0.0.1:5001/api/playlists"
 
 
 function App() {
@@ -41,9 +42,9 @@ function App() {
   
   useEffect(() =>
   {
-    fetchFromServer("http://192.168.7.4:5001/api/songs",setSongs);
-    fetchFromServer("http://192.168.7.4:5001/api/favorites",setFavorites!);
-    fetchFromServer("http://192.168.7.4:5001/api/playlists",setPlaylists);
+    fetchFromServer(SONGS_URL,setSongs);
+    fetchFromServer(FAVORITE_URL,setFavorites!);
+    fetchFromServer(PLAYLISTS_URL,setPlaylists);
   },[]);
 
   const {classes} = useStyles();

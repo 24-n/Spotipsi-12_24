@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import {type Song } from "../../types/Song";
 import {type Playlist } from "../../types/Playlist";
 import React from "react";
-import {Route,useParams} from 'react-router-dom'
+import {useParams} from 'react-router-dom'
 
 interface Props
 {
@@ -39,24 +39,16 @@ function Main({songs,favorites,playlists,currentPage,setCurrentPage,setFavorites
             <Grid size={12} height={"7vh"}>
               <Header />
             </Grid>
-
             <Grid size={10.3} height={"82vh"}>
-            
               {!isLoading && <PageContent songs={songs} favorites={favorites} playlists={playlists}
               currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists}/>}
             </Grid>
-
-            <Grid size={1.7} height={"82vh"}>
+            <Grid size={1.7} height={"82vh"} >
               <SideBar setcurrentpage={setCurrentPage}/>
             </Grid>
-
-           
-
             <Grid size={12} height={"11vh"}>
               <Player />
             </Grid>
-
-
           </Grid>
         </Box>
       
