@@ -39,7 +39,6 @@ const PlaylistsPage = ({playlists, setCurrentPage, setPlaylists }: Props) => {
         const formData = new FormData(event.currentTarget);
         const formJson = Object.fromEntries((formData as any).entries());
         const playlist = formJson.playlist;
-        console.log(playlist);
         addPlaylist(playlist);
         handleClose();
     };
@@ -47,7 +46,8 @@ const PlaylistsPage = ({playlists, setCurrentPage, setPlaylists }: Props) => {
     const createPlaylistsElements = () => {
         return playlists.map(playlist => {
             return (
-                <ListItem key={playlist.id} sx={{ borderBottom: '1px solid grey', gap: "1%" }} className={classes.listItem} onClick={() => setPageByPlaylist(playlist.name)}>
+                <ListItem key={playlist.id} sx={{ borderBottom: '1px solid grey', gap: "1%" }}
+                 className={classes.listItem} onClick={() => setPageByPlaylist(playlist.name)}>
                     <p className={classes.h}>{playlist.name}</p>
                     <p className={classes.p}>{playlist.songIds.length} שירים</p>
                 </ListItem>)

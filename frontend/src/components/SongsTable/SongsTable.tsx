@@ -41,7 +41,6 @@ function SongsTable({ songs, favorites, playlists, setFavorites, setPlaylists }:
             setPlaylists((prev) => prev.map(playlist => {
                 if (playlist.id == playlistID) {
                     !playlist.songIds.includes(songID) && playlist.songIds.push(songID);
-                    console.log(songID, playlist);
                 }
                 handleClose();
                 return playlist;
