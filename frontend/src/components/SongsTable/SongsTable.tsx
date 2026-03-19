@@ -67,6 +67,8 @@ function SongsTable({ songs, favorites, playlists, setFavorites, setPlaylists }:
             );
         })
     }
+
+    
     const [currentPlayList, setCurrentPlayList] = useState<string | undefined>();
 
     const playlistsElements = createPlaylistsElements(currentPlayList!);
