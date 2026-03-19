@@ -46,6 +46,18 @@ const useStyles = makeStyles()(() => ({
         borderRadius: "50px",
         borderStyle: "solid",
         borderWidth: "1px",
+    },
+    dialog: {
+        height: "100%",
+        width: "100%",
+        color: "white",
+        backgroundColor: "#424242",
+    },
+    cancellation: {
+        color: "#B764DA",
+    },
+    createAndName: {
+        color: "white",
     }
 }));
 

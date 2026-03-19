@@ -6,7 +6,6 @@ const useStyles = makeStyles()(() => ({
         color: "white"
 
     },
-
     H1:
     {
         textAlign: "end",
