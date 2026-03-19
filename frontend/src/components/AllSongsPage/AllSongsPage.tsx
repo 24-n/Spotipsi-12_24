@@ -12,6 +12,8 @@ interface Props
   currentPage:string;
   setFavorites:React.Dispatch<React.SetStateAction<string[]>>;
   setPlaylists:React.Dispatch<React.SetStateAction<Playlist[]>>;
+ 
+
 }
 
 function AllSongsPage({songs,favorites,playlists,currentPage,setFavorites,setPlaylists}:Props) {
