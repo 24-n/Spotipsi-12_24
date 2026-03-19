@@ -16,7 +16,7 @@ interface Props
 
 function FavoritesPage({songs,favorites,playlists,currentPage,setFavorites,setPlaylists}:Props) {
     const {classes} = useStyles();
-    const filteredSongs = songs.filter(song => favorites.indexOf(song.id) != -1);
+    const filteredSongs = songs.filter(song => favorites.includes(song.id));
     return (
         <div className={classes.FavoritesPage}>
             <h1 className={classes.H1}>המועדפים שלי</h1>
