@@ -31,7 +31,8 @@ const useStyles = makeStyles()(() => ({
 
     ListItmTxt: {
         fontSize:"1rem"
-    }
+    },
+    
 }));
 
 export default useStyles
