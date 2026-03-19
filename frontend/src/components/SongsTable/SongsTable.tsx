@@ -11,6 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 
 
+
 const FAVORITE_UPDATE_URL = "http://127.0.0.1:5001/api/favorites/"
 const PLAYLISTS_BASE_URL = "http://127.0.0.1:5001/api/playlists/"
 
@@ -22,17 +23,20 @@ interface Props {
     currentPage: string;
     setFavorites: React.Dispatch<React.SetStateAction<string[]>>;
     setPlaylists: React.Dispatch<React.SetStateAction<Playlist[]>>;
+    
 }
 
 function SongsTable({ songs, favorites, playlists, currentPage, setFavorites, setPlaylists }: Props) {
-
+    
    
 
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-    
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>,CurrentPlayList:string|undefined) => {
+
+  
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>,CurrentPlayList?:string|undefined) => {
         setAnchorEl(event.currentTarget);
-        setCurrentPlayList(CurrentPlayList);
+        CurrentPlayList && setCurrentPlayList(CurrentPlayList);
+        
     };
 
     const handleClose = () => {
@@ -40,10 +44,6 @@ function SongsTable({ songs, favorites, playlists, currentPage, setFavorites, se
     };
 
     const open = Boolean(anchorEl);
-    
-
-   
-   
     
 
     const updateServer = (songID:string,operation?:"add"|"remove",playlistID?:string) =>
@@ -54,7 +54,7 @@ function SongsTable({ songs, favorites, playlists, currentPage, setFavorites, se
             setPlaylists((prev) => prev.map(playlist => {
                 if (playlist.id == playlistID)
                 {
-                    playlist.songIds.push(songID);
+                    !playlist.songIds.includes(songID) && playlist.songIds.push(songID);
                     console.log(songID,playlist);
                 }
                 handleClose();
@@ -100,20 +100,22 @@ function SongsTable({ songs, favorites, playlists, currentPage, setFavorites, se
                     
                    
 
-                    <IconButton className={classes.IconBtn} onMouseEnter={(e) => handleClick(e,song.id)}>
+                    <IconButton className={classes.IconBtn} onClick={(e) => handleClick(e,song.id)} onMouseOver={(e) => handleClick(e,song.id)}>
                         <AddIcon className={classes.whiteBorderIcon}/>
                     </IconButton>
                     
                     
                     <Menu open={open}
+                            MenuListProps={{ onMouseLeave: handleClose }}
                             key={song.id}
                             anchorEl={anchorEl}
+                            
                             onClose={handleClose}
+                           
+                           
                             anchorOrigin={{
                             vertical: 'bottom',
                             horizontal: 'left',
-                            
-                            
                             }}>
                            
                             {playlistsElements}
@@ -129,18 +131,12 @@ function SongsTable({ songs, favorites, playlists, currentPage, setFavorites, se
 
 
     const { classes } = useStyles();
-    // const [songElements, setSongElements] = useState(createSongsElements());
-   
-  
-    // useEffect(() => {
-    //     setSongElements(createSongsElements());
-        
-    // }, [favorites,open]);
-
+ 
    
 
 
     return (
+        
         <div className={classes.SongsTable}>
             {songs.length != 0 && <List>
                 {createSongsElements()}

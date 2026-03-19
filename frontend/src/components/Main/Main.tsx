@@ -41,7 +41,7 @@ function Main({songs,favorites,playlists,currentPage,setCurrentPage,setFavorites
             </Grid>
             <Grid size={10.3} height={"82vh"}>
               {!isLoading && <PageContent songs={songs} favorites={favorites} playlists={playlists}
-              currentPage={currentPage} setFavorites={setFavorites} setPlaylists={setPlaylists}/>}
+              currentPage={currentPage} setCurrentPage={setCurrentPage} setFavorites={setFavorites} setPlaylists={setPlaylists}/>}
             </Grid>
             <Grid size={1.7} height={"82vh"} >
               <SideBar setcurrentpage={setCurrentPage}/>
