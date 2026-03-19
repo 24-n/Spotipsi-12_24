@@ -27,12 +27,12 @@ interface Props {
     favorites: string[];
     playlists: Playlist[];
     currentPage: string;
-    setCurrentPage:React.Dispatch<React.SetStateAction<string>>
+    setCurrentPage: React.Dispatch<React.SetStateAction<string>>
     setFavorites: React.Dispatch<React.SetStateAction<string[]>>;
     setPlaylists: React.Dispatch<React.SetStateAction<Playlist[]>>;
 }
 
-const PlaylistsPage = ({ songs, favorites, playlists, currentPage, setCurrentPage,setFavorites, setPlaylists }: Props) => {
+const PlaylistsPage = ({ songs, favorites, playlists, currentPage, setCurrentPage, setFavorites, setPlaylists }: Props) => {
 
 
 
@@ -56,11 +56,11 @@ const PlaylistsPage = ({ songs, favorites, playlists, currentPage, setCurrentPag
         handleClose();
     };
 
-  
-   
-      
-      
-  
+
+
+
+
+
 
 
     const createPlaylistsElements = () => {
@@ -73,7 +73,7 @@ const PlaylistsPage = ({ songs, favorites, playlists, currentPage, setCurrentPag
         })
     }
 
-    
+
     const setPageByPlaylist = (playlistName: string): void => {
         setCurrentPage(playlistName);
         navigate(`/${playlistName}`);
@@ -83,24 +83,23 @@ const PlaylistsPage = ({ songs, favorites, playlists, currentPage, setCurrentPag
     const [PlaylistsElements, setPlaylistsElements] = useState(createPlaylistsElements());
     const navigate = useNavigate();
 
-   
 
-    const addPlaylist = (playlistName:string) =>
-    {
-    
-        fetch(ADD_PLAYLIST_URL , {
+
+    const addPlaylist = (playlistName: string) => {
+
+        fetch(ADD_PLAYLIST_URL, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             method: "POST",
-            body: JSON.stringify({name:playlistName})
+            body: JSON.stringify({ name: playlistName })
         })
-        .then(res => res.json()).then(data => setPlaylists(prev => {console.log(prev);return [...prev,data]}));
-        
+            .then(res => res.json()).then(data => setPlaylists(prev => { console.log(prev); return [...prev, data] }));
+
     }
 
-    useEffect(() => setPlaylistsElements(createPlaylistsElements()),[playlists]);
+    useEffect(() => setPlaylistsElements(createPlaylistsElements()), [playlists]);
 
 
     return (
@@ -113,28 +112,29 @@ const PlaylistsPage = ({ songs, favorites, playlists, currentPage, setCurrentPag
                 </Button>
 
                 <Dialog open={open} onClose={handleClose}>
-                    <DialogTitle>יצירת פלייליסט חדש</DialogTitle>
-                    <DialogContent>
-                  
-                    <form onSubmit={handleSubmit} id="subscription-form">
-                        <TextField
-                     
-                        id="name"
-                        name="email"
-                        label="שם הפלייליסט"
-                        variant="standard"
-                        />
-                    </form>
-                    </DialogContent>
-                    <DialogActions>
-                    <Button type="submit" form="subscription-form">
-                        צור
-                    </Button>
-                    <Button onClick={handleClose}>ביטול</Button>
-                   
-                    </DialogActions>
+                    <div className={classes.dialog}>
+                        <DialogTitle>יצירת פלייליסט חדש</DialogTitle>
+                        <DialogContent>
+
+                            <form onSubmit={handleSubmit} id="subscription-form">
+                                <TextField className={classes.createAndName}
+                                    id="name"
+                                    name="playlist"
+                                    label="שם הפלייליסט"
+                                    variant="standard"
+                                />
+                            </form>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button type="submit" form="subscription-form" className={classes.createAndName}>
+                                צור
+                            </Button>
+                            <Button onClick={handleClose} className={classes.cancellation}>ביטול</Button>
+
+                        </DialogActions>
+                    </div>
                 </Dialog>
- 
+
 
             </div>
             {PlaylistsElements.length != 0 && <List sx={{ width: '100%', height: '100%' }}>
